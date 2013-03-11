@@ -1,4 +1,4 @@
-# [Stage Framework](http://www.stageframework.com)
+# [Stage Framework](http://www.tml.tkk.fi/~ralatalo/stageframework/)
 
 Stage Framework is an experimental HTML5 and CSS3 framework for
 digital magazine and newspaper publishing. It provides a web
@@ -21,6 +21,6 @@ The licenses of major components are as follows:
 
 ## Getting Started
 
-Getting started guide is provided on the framework [website](http://www.stageframework.com/).
+Getting started guide is provided on the framework [website](http://www.tml.tkk.fi/~ralatalo/stageframework/).
 
 More thorough documentation will be included in this readme file.
