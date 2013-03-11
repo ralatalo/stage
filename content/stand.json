@@ -1,0 +1,31 @@
+{
+  "publisher": [
+    "Stage Framework"
+  ],
+  "content": [
+    {
+      "identifier": "books",
+      "title": "Book Collection",
+      "issues": [
+        {
+          "identifier": "b1",
+          "title": "Letters of J.A.",
+          "languages": [
+            "en"
+          ],
+          "covers": {
+            "high": "images/cover-2048.jpg",
+            "medium": "images/cover-2048.jpg",
+            "small": "images/cover-1024.jpg"
+          },
+          "pages": [
+            "p1.html",
+            "p2.html"
+          ]
+        }
+      ],
+      "date": "2013-03-10"
+    }
+  ],
+  "updated": "2013-03-10"
+}

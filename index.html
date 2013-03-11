@@ -1,0 +1,102 @@
+<!doctype html>
+<!--[if lt IE 7]> <html manifest="stage.appcache" debug="true" class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html manifest="stage.appcache" debug="true" class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html manifest="stage.appcache" debug="true" class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html manifest="stage.appcache" debug="true" class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="cleartype" content="on" />
+	<title>Stage Framework</title>
+	<meta name="description" content="">
+	
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" /> 
+	
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="MobileOptimized" content="320" />
+	
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/stage.js.css" />
+	<link rel="stylesheet" href="css/stage.css" />
+	
+	<link rel="stylesheet" href="js/libs/photoswipe/photoswipe.css" />
+	
+	<link href='img/app/29x29.png' rel='apple-touch-icon-precomposed' sizes='29x29' />
+	<link href='img/app/50x50.png' rel='apple-touch-icon-precomposed' sizes='50x50' />
+	<link href='img/app/57x57.png' rel='apple-touch-icon-precomposed' sizes='57x57' />
+	<link href='img/app/58x58.png' rel='apple-touch-icon-precomposed' sizes='58x58' />
+	<link href='img/app/72x72.png' rel='apple-touch-icon-precomposed' sizes='72x72' />
+	<link href='img/app/100x100.png' rel='apple-touch-icon-precomposed' sizes='100x100' />
+	<link href='img/app/114x114.png' rel='apple-touch-icon-precomposed' sizes='114x114' />
+	<link href='img/app/144x144.png' rel='apple-touch-icon-precomposed' sizes='144x144' />
+	<link href='img/app/512x512.png' rel='apple-touch-icon-precomposed' sizes='512x512' />
+	<link href='img/app/1024x1024.png' rel='apple-touch-icon-precomposed' sizes='1024x1024' />
+	
+	<link href='img/app/320x460.png' media='(device-width: 320px) and (device-height: 480px)' rel='apple-touch-startup-image' />
+	<link href='img/app/640x920.png' media='(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)' rel='apple-touch-startup-image' />
+	<link href='img/app/640x1096.png' media='(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)' rel='apple-touch-startup-image' />
+	<link href='img/app/768x1004.png' media='(device-width: 768px) and (orientation: portrait)' rel='apple-touch-startup-image' />
+	<link href='img/app/1024x748.png' media='(device-width: 768px) and (orientation: landscape)' rel='apple-touch-startup-image' />
+	<link href='img/app/1536x2008.png' media='(device-width: 768px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)' rel='apple-touch-startup-image' />
+	<link href='img/app/2048x1496.png' media='(device-width: 768px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)' rel='apple-touch-startup-image' />
+	
+	<!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>-->
+	<script src="js/libs/modernizr-2.6.2.min.js"></script>
+	
+</head>
+<body style="background: black;">
+	
+	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+	
+	<!-- Magazine content (browsing) view container. -->
+	<div id="stage" class="test-font" style="display: none;">
+		<div class="viewport"></div>
+	</div>
+	
+	<!-- Return to the magazine stand link. -->
+	<a href="#" id="return" class="ui return"></a>
+	
+	<!-- Magazine stand view container. -->
+	<div id="stand" class="test-font" style="display: none;">
+		<div class="shadow"></div>
+		
+		<!-- Magazine stand navigation bar. -->
+		<div class="navigation">
+			<div class="logo"></div>
+			<a href="#" class="ui settings"></a>
+		</div>
+		
+		<!-- Magazine stand content. -->
+		<div class="content"></div>
+		
+		<!-- Magazine stand footer. -->
+		<div class="footer">
+			<div class="brand"></div>
+		</div>
+	</div>
+	
+	<!-- Black view change animation overlay. -->
+	<div id="curtain" class="animated" style="display: block;"></div>
+	
+	<script src="js/libs/jquery-1.7.1.min.js"></script>
+	<script src="js/libs/less-1.3.1.min.js"></script>
+	<script src="js/libs/swipe.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/stage.js"></script>
+	
+	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+	<!--
+	<script>
+		var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+	</script>
+	-->
+	
+</body>
+</html>

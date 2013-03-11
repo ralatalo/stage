@@ -1,0 +1,65 @@
+<?php
+
+header("Content-Type: text/cache-manifest");
+
+print "CACHE MANIFEST\n";
+
+if ($_COOKIE["UUID"]) {
+	print "# UUID: " . $_COOKIE["UUID"] . "\n\n";
+}
+
+print "CACHE:\n\n";
+
+@$database = new SQLite3('cache/stage.sqlite', 0666, $error);
+
+$query = 'SELECT * FROM appcache WHERE uuid="' . $_COOKIE["UUID"] . '"';
+if ($result = @$database->query($query, SQLITE_BOTH, $error)) {
+	while ($row = $result->fetch()) {
+		print(urldecode($row['resource']) . "\n");
+	}
+}
+
+print "\n#CACHE:
+NETWORK:
+
+favicon.ico
+index.html
+
+css/reset.css
+css/stage.js.css
+css/stage.css
+
+js/libs/modernizr-2.6.2.min.js
+js/libs/jquery-1.7.1.min.js
+js/libs/less-1.3.0.min.js
+js/libs/swipe.js
+js/stage.js
+
+img/stand-bg.png
+img/logo-stage-fw-box.png
+img/logo-retina-stage-fw-box.png
+img/logo-aalto-small.png
+img/logo-retina-aalto-small.png
+
+svg/ui/cog.svg
+img/ui/cog.png
+
+svg/ui/left.svg
+img/ui/left.png
+
+img/ui/spinner.gif
+
+
+NETWORK:
+
+*
+stage.appcache
+http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
+http://www.google-analytics.com/ga.js
+http://www.google-analytics.com/
+content/stand.json
+content/
+
+cache/alter.php\n\n";
+
+?>

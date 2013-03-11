@@ -1,0 +1,641 @@
+/* Stage Framework */
+
+body {
+	overflow: auto !important;
+	position: relative !important;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:focus { 
+	outline: none;
+}
+
+#stand {
+	width: 100%;
+	min-height: 100%;
+	overflow: auto;
+	position: relative;
+	padding-bottom: 8%;
+	background: url('../img/stand-bg.png') repeat;
+}
+
+#stand * {
+	-webkit-backface-visibility: hidden;
+	-khtml-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+       screen and (-khtml-min-device-pixel-ratio: 2),
+       screen and (-ms-min-device-pixel-ratio: 2),
+       screen and (-o-min-device-pixel-ratio: 2/1),
+       screen and (min--moz-device-pixel-ratio: 2),
+       screen and (min-device-pixel-ratio: 2) {
+	#stand, #stage .sheet {
+		background-size: 500px 500px;
+	}
+}
+
+#stand .shadow {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	pointer-events: none;
+	z-index: 1;
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(0,0,0,0)), color-stop(50%, rgba(0,0,0,0.10)), color-stop(100%, rgba(0,0,0,0.50)));
+	background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,0.10) 50%, rgba(0,0,0,0.50) 100%);
+	background: -khtml-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,0.10) 50%, rgba(0,0,0,0.50) 100%);
+	background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,0.10) 50%, rgba(0,0,0,0.50) 100%);
+	background: -ms-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,0.10) 50%, rgba(0,0,0,0.50) 100%);
+	background: -o-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,0.10) 50%, rgba(0,0,0,0.50) 100%);
+	background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.10) 50%, rgba(0,0,0,0.50) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#a6000000', GradientType=0);
+}
+
+/* Opera doesn't support pointer-events as of November 2012. */
+x:-o-prefocus, #stand .shadow {
+	z-index: 0;
+}
+
+@media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1),
+       screen and (min-width: 1152px) and (-webkit-min-device-pixel-ratio: 1.5),
+       screen and (min-width: 1536px) and (-webkit-min-device-pixel-ratio: 2),
+       
+       screen and (min-width: 768px) and (-khtml-min-device-pixel-ratio: 1),
+       screen and (min-width: 1152px) and (-khtml-min-device-pixel-ratio: 1.5),
+       screen and (min-width: 1536px) and (-khtml-min-device-pixel-ratio: 2),
+       
+       screen and (min-width: 768px) and (-ms-min-device-pixel-ratio: 1),
+       screen and (min-width: 1152px) and (-ms-min-device-pixel-ratio: 1.5),
+       screen and (min-width: 1536px) and (-ms-min-device-pixel-ratio: 2),
+       
+       screen and (min-width: 768px) and (-o-min-device-pixel-ratio: 1/1),
+       screen and (min-width: 1152px) and (-o-min-device-pixel-ratio: 3/2),
+       screen and (min-width: 1536px) and (-o-min-device-pixel-ratio: 2/1),
+       
+       screen and (min-width: 768px) and (min--moz-device-pixel-ratio: 1),
+       screen and (min-width: 1152px) and (min--moz-device-pixel-ratio: 1.5),
+       screen and (min-width: 1536px) and (min--moz-device-pixel-ratio: 2),
+       
+       screen and (min-width: 768px) and (min-device-pixel-ratio: 1),
+       screen and (min-width: 1152px) and (min-device-pixel-ratio: 1.5),
+       screen and (min-width: 1536px) and (min-device-pixel-ratio: 2) {
+	#stand .shadow {
+		background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(50%, rgba(0, 0, 0, 0.2)), color-stop(100%, rgba(0, 0, 0, 0.65)));
+		background: -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.65) 100%);
+		background: -khtml-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.65) 100%);
+		background: -moz-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.65) 100%);
+		background: -ms-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.65) 100%);
+		background: -o-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.65) 100%);
+		background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.65) 100%);
+	}
+}
+
+#stand .navigation {
+	height: 44px;
+	background: rgba(15, 15, 15, 0.8);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+	position: fixed;
+	width: 200%;
+	z-index: 2;
+}
+
+#stand .navigation .logo {
+	width: 89px;
+	height: 58px;
+	position: absolute;
+	top: 0;
+	left: 25%;
+	background: url('../img/logo-stage-fw-box.png') no-repeat;
+	background-size: contain;
+	margin-left: -45px;
+	margin-top: 14px;
+}
+
+#stand .navigation .ui.settings {
+	width: 30px;
+	height: 30px;
+	display: block;
+	margin: 7px;
+	position: absolute;
+	left: 50%;
+	margin-left: -46px;
+	background-size: contain;
+	background-image: url('../img/ui/cog.png');
+	background-image: url('../svg/ui/cog.svg'), url('../img/ui/cog.png');
+	background-repeat: no-repeat;
+	
+	/* Uncomment for Android and Windows Phone style UI buttons. */
+	background-size: 60% 60%;
+	background-position: 50% 50%;
+	background-color: rgba(0, 0, 0, 0.9);
+	border-radius: 7px;
+	border: 1px solid rgba(51, 51, 51, 1);
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+       screen and (-khtml-min-device-pixel-ratio: 2),
+       screen and (-ms-min-device-pixel-ratio: 2),
+       screen and (-o-min-device-pixel-ratio: 2/1),
+       screen and (min--moz-device-pixel-ratio: 2),
+       screen and (min-device-pixel-ratio: 2) {
+	#stand .navigation .logo {
+		background: url('../img/logo-retina-stage-fw-box.png') no-repeat;
+	}
+}
+
+#stand .content {
+	font-size: 0;
+	text-align: left;
+	z-index: 1;
+	padding: 65px 2.1% 90px 2.1%;
+}
+
+#stand .content .divider {
+	display: block;
+	width: 100%;
+	height: 30px;
+	margin-top: 6%;
+	color: #dddddd;
+	font-size: 12px;
+	line-height: 30px;
+	background: rgba(31, 31, 31, 0.65);
+	border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+#stand .content .divider .title {
+	margin-left: 2%;
+}
+
+#stand .content .issue {
+	width: 28.33%;
+	display: inline-block;
+	position: relative;
+	background: rgba(15, 15, 15, 0.7) /*url('../img/ui/spinner.gif')*/ no-repeat 50% 50%;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.75);
+	margin-top: 6%;
+	margin-bottom: 8%;
+	margin-right: 2.5%;
+	margin-left: 2.5%;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+       screen and (-khtml-min-device-pixel-ratio: 2),
+       screen and (-ms-min-device-pixel-ratio: 2),
+       screen and (-o-min-device-pixel-ratio: 2/1),
+       screen and (min--moz-device-pixel-ratio: 2),
+       screen and (min-device-pixel-ratio: 2) {
+	#stand .content .issue {
+		background-size: 16px 16px;
+	}
+}
+
+@media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1),
+       screen and (min-width: 1152px) and (-webkit-min-device-pixel-ratio: 1.5),
+       screen and (min-width: 1536px) and (-webkit-min-device-pixel-ratio: 2),
+       
+       screen and (min-width: 768px) and (-khtml-min-device-pixel-ratio: 1),
+       screen and (min-width: 1152px) and (-khtml-min-device-pixel-ratio: 1.5),
+       screen and (min-width: 1536px) and (-khtml-min-device-pixel-ratio: 2),
+       
+       screen and (min-width: 768px) and (-ms-min-device-pixel-ratio: 1),
+       screen and (min-width: 1152px) and (-ms-min-device-pixel-ratio: 1.5),
+       screen and (min-width: 1536px) and (-ms-min-device-pixel-ratio: 2),
+       
+       screen and (min-width: 768px) and (-o-min-device-pixel-ratio: 1/1),
+       screen and (min-width: 1152px) and (-o-min-device-pixel-ratio: 3/2),
+       screen and (min-width: 1536px) and (-o-min-device-pixel-ratio: 2/1),
+       
+       screen and (min-width: 768px) and (min--moz-device-pixel-ratio: 1),
+       screen and (min-width: 1152px) and (min--moz-device-pixel-ratio: 1.5),
+       screen and (min-width: 1536px) and (min--moz-device-pixel-ratio: 2),
+       
+       screen and (min-width: 768px) and (min-device-pixel-ratio: 1),
+       screen and (min-width: 1152px) and (min-device-pixel-ratio: 1.5),
+       screen and (min-width: 1536px) and (min-device-pixel-ratio: 2) {
+	
+	#stand .content .divider {
+		font-size: 14px;
+		color: #fefefe;
+		margin-top: 12%;
+		margin-bottom: -2%;
+	}
+	
+	#stand .content .divider:first-of-type {
+		margin-top: 6%;
+	}
+	
+	#stand .content .issue {
+		width: 21%;
+		margin-top: 6%;
+		margin-bottom: 0%;
+		margin-right: 2%;
+		margin-left: 2%;
+	}
+	
+}
+
+#stand .content .aspect-ratio {
+	margin-top: 138%;
+}
+
+#stand .content .cover {
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-position: 50% 50%;
+	background-size: cover;
+	opacity: 0;
+	
+	-webkit-transition: opacity 0.75s linear;
+	-khtml-transition: opacity 0.75s linear;
+	-moz-transition: opacity 0.75s linear;
+	-ms-transition: opacity 0.75s linear;
+	-o-transition: opacity 0.75s linear;
+	transition: opacity 0.75s linear;
+}
+
+#stand .content .info {
+	width: 100%;
+	position: absolute;
+	text-align: center;
+	padding-top: 6px;
+	display: none;
+}
+
+#stand .content.info-overlayed .info {
+	padding-top: 0;
+	bottom: 0;
+}
+
+#stand .content.info-hidden .info {
+	display: none;
+}
+
+#stand .content .info .title {
+	padding: 4px 10px;
+	border-radius: 10px;
+	font-size: 9px;
+	font-weight: bold;
+	color: rgba(255, 255, 255, 0.86);
+	background: rgba(0, 0, 0, 0.6);
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	max-width: 80%;
+}
+
+#stand .content.info-overlayed .info .title {
+	padding: 8px 0;
+	border-radius: 0;
+	background: rgba(0, 0, 0, 0.8);
+	max-width: 100%;
+	width: 100%;
+}
+
+@media screen and (min-width: 320px) and (-webkit-min-device-pixel-ratio: 1),
+       screen and (min-width: 480px) and (-webkit-min-device-pixel-ratio: 1.5),
+       screen and (min-width: 640px) and (-webkit-min-device-pixel-ratio: 2),
+       
+       screen and (min-width: 320px) and (-khtml-min-device-pixel-ratio: 1),
+       screen and (min-width: 480px) and (-khtml-min-device-pixel-ratio: 1.5),
+       screen and (min-width: 640px) and (-khtml-min-device-pixel-ratio: 2),
+       
+       screen and (min-width: 320px) and (-ms-min-device-pixel-ratio: 1),
+       screen and (min-width: 480px) and (-ms-min-device-pixel-ratio: 1.5),
+       screen and (min-width: 640px) and (-ms-min-device-pixel-ratio: 2),
+       
+       screen and (min-width: 320px) and (-o-min-device-pixel-ratio: 1/1),
+       screen and (min-width: 480px) and (-o-min-device-pixel-ratio: 3/2),
+       screen and (min-width: 640px) and (-o-min-device-pixel-ratio: 2/1),
+       
+       screen and (min-width: 320px) and (min--moz-device-pixel-ratio: 1),
+       screen and (min-width: 480px) and (min--moz-device-pixel-ratio: 1.5),
+       screen and (min-width: 640px) and (min--moz-device-pixel-ratio: 2),
+       
+       screen and (min-width: 320px) and (min-device-pixel-ratio: 1),
+       screen and (min-width: 480px) and (min-device-pixel-ratio: 1.5),
+       screen and (min-width: 640px) and (min-device-pixel-ratio: 2) {
+	#stand .content .info {
+		display: block;
+	}
+}
+
+@media screen and (min-width: 425px) and (-webkit-min-device-pixel-ratio: 1),
+       screen and (min-width: 637px) and (-webkit-min-device-pixel-ratio: 1.5),
+       
+       screen and (min-width: 425px) and (-khtml-min-device-pixel-ratio: 1),
+       screen and (min-width: 637px) and (-khtml-min-device-pixel-ratio: 1.5),
+       
+       screen and (min-width: 425px) and (-ms-min-device-pixel-ratio: 1),
+       screen and (min-width: 637px) and (-ms-min-device-pixel-ratio: 1.5),
+       
+       screen and (min-width: 425px) and (-o-min-device-pixel-ratio: 1/1),
+       screen and (min-width: 637px) and (-o-min-device-pixel-ratio: 3/2),
+       
+       screen and (min-width: 425px) and (min--moz-device-pixel-ratio: 1),
+       screen and (min-width: 637px) and (min--moz-device-pixel-ratio: 1.5),
+       
+       screen and (min-width: 425px) and (min-device-pixel-ratio: 1),
+       screen and (min-width: 637px) and (min-device-pixel-ratio: 1.5) {
+	#stand .content .info {
+		padding-top: 10px;
+	}
+	
+	#stand .content .info .title {
+		font-size: 10px;
+	}
+}
+
+@media screen and (min-width: 850px) and (-webkit-min-device-pixel-ratio: 2),
+       screen and (min-width: 850px) and (-khtml-min-device-pixel-ratio: 2),
+       screen and (min-width: 850px) and (-ms-min-device-pixel-ratio: 2),
+       screen and (min-width: 850px) and (-o-min-device-pixel-ratio: 2/1),
+       screen and (min-width: 850px) and (min--moz-device-pixel-ratio: 2),
+       screen and (min-width: 850px) and (min-device-pixel-ratio: 2) {
+	#stand .content .info .title {
+		font-size: 9px;
+	}
+}
+
+#stand .footer {
+	width: 100%;
+	height: 90px;
+	position: absolute;
+	bottom: 0;
+	font-size: 0;
+	text-align: center;
+}
+
+#stand .footer .brand {
+	width: 180px;
+	height: 41px;
+	display: inline-block;
+	margin-top: 19px;
+	margin-right: 5%;
+	margin-left: 5%;
+	background-size: contain;
+	background: url('../img/logo-aalto-small.png') no-repeat;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+       screen and (-khtml-min-device-pixel-ratio: 2),
+       screen and (-ms-min-device-pixel-ratio: 2),
+       screen and (-o-min-device-pixel-ratio: 2/1),
+       screen and (min--moz-device-pixel-ratio: 2),
+       screen and (min-device-pixel-ratio: 2) {
+	#stand .footer .brand {
+		background: url('../img/logo-retina-aalto-small.png') no-repeat;
+	}
+}
+
+#return.ui.return {
+	width: 40px;
+	height: 40px;
+	
+	top: 20%;
+	left: 0;
+	position: fixed;
+	
+	-webkit-border-top-right-radius: 10px;
+	-khtml-border-top-right-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	-ms-border-top-right-radius: 10px;
+	border-top-right-radius: 10px;
+	
+	-webkit-border-bottom-right-radius: 10px;
+	-khtml-border-bottom-right-radius: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-ms-border-bottom-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	
+	background-size: contain;
+	background-image: url('../img/ui/left.png');
+	background-image: url('../svg/ui/left.svg'), url('../img/ui/left.png');
+	background-repeat: no-repeat;
+	
+	/* Uncomment for Android and Windows Phone style UI buttons. */
+	background-size: 60% 60%;
+	background-position: 50% 50%;
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+#curtain {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 1;
+	z-index: 3;
+	position: fixed;
+	background: black;
+}
+
+#curtain.animated {
+	-webkit-transition: opacity 0.5s linear;
+	-khtml-transition: opacity 0.5s linear;
+	-moz-transition: opacity 0.5s linear;
+	-ms-transition: opacity 0.5s linear;
+	-o-transition: opacity 0.5s linear;
+	transition: opacity 0.5s linear;
+}
+
+#stage, #stage .viewport, #stage .container, #stage .sheet {
+	-webkit-backface-visibility: hidden;
+	-khtml-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+#stage {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: fixed;
+}
+
+#stage, #stage .container, #stage .sheet {
+	-webkit-transform: translate3d(0px, 0px, 0px);
+	-khtml-transform: translate3d(0px, 0px, 0px);
+	-moz-transform: translate3d(0px, 0px, 0px);
+	-ms-transform: translateY(0px);
+	-ms-transform: translate3d(0px, 0px, 0px);
+	-o-transform: translateY(0px);
+	-o-transform: translate3d(0px, 0px, 0px);
+	transform: translate3d(0px, 0px, 0px);
+}
+
+#stage .sheet {
+	opacity: 0;
+	text-align: left;
+	font-size: 12px;
+}
+
+#stage .container.loading {
+	background: url('../img/ui/spinner.gif') no-repeat 50% 50%;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+       screen and (-khtml-min-device-pixel-ratio: 2),
+       screen and (-ms-min-device-pixel-ratio: 2),
+       screen and (-o-min-device-pixel-ratio: 2/1),
+       screen and (min--moz-device-pixel-ratio: 2),
+       screen and (min-device-pixel-ratio: 2) {
+	#stage .container.loading {
+		background-size: 16px 16px;
+	}
+}
+
+#stage .sheet .html {
+	width: 100% !important;
+	height: auto !important;
+	min-height: 100% !important;
+	background-color: white;
+	position: absolute !important;
+}
+
+#stage .sheet iframe {
+	width: 100%;
+	min-height: 100%;
+	border: none;
+	
+	/* Opera doesn't support pointer-events as of November 2012. */
+	pointer-events: none;
+}
+
+.spinner {
+	background-color: rgba(0, 0, 0, 0);
+	border: 5px solid rgba(255, 255, 255, 0.9);
+	opacity: .9;
+	border-top: 5px solid rgba(0, 0, 0, 0);
+	border-left: 5px solid rgba(0, 0, 0, 0);
+	border-radius: 50px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+.wide-spinner {
+	opacity: 0.01;
+	box-shadow: 0 0 35px white;
+	width: 50px;
+	height: 50px;
+	margin-top: -25px;
+	margin-left: -25px;
+	-webkit-animation: spinoff 0.75s infinite linear;
+	-khtml-animation: spinoff 0.75s infinite linear;
+	-moz-animation: spinoff 0.75s infinite linear;
+	-ms-animation: spinoff 0.75s infinite linear;
+	-o-animation: spinoff 0.75s infinite linear;
+	animation: spinoff 0.75s infinite linear;
+}
+.small-spinner {
+	box-shadow: 0 0 15px white; 
+	width: 30px;
+	height: 30px;
+	margin-top: -15px;
+	margin-left: -15px;
+	opacity: 0;
+	-webkit-animation: spin 0.75s infinite linear;
+	-khtml-animation: spin 0.75s infinite linear;
+	-moz-animation: spin 0.75s infinite linear;
+	-ms-animation: spin 0.75s infinite linear;
+	-o-animation: spin 0.75s infinite linear;
+	animation: spin 0.75s infinite linear;
+}
+
+#stand .issue .spinner {
+	z-index: 0;
+}
+
+#stand .issue .wide-spinner {
+	width: 24px;
+	height: 24px;
+	margin-top: -12px;
+	margin-left: -12px;
+}
+
+#stand .issue .small-spinner {
+	width: 14px;
+	height: 14px;
+	margin-top: -7px;
+	margin-left: -7px;
+	opacity: 1;
+	-webkit-transition: opacity 0.25s linear;
+	-khtml-transition: opacity 0.25s linear;
+	-moz-transition: opacity 0.25s linear;
+	-ms-transition: opacity 0.25s linear;
+	-o-transition: opacity 0.25s linear;
+	transition: opacity 0.25s linear;
+}
+
+@-webkit-keyframes spin {
+	0% { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(360deg); }
+}
+@-khtml-keyframes spin {
+	0% { -khtml-transform: rotate(0deg); }
+	100% { -khtml-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+	0% { -moz-transform: rotate(0deg); }
+	100% { -moz-transform: rotate(360deg); }
+}
+@-ms-keyframes spin {
+	0% { -ms-transform: rotate(0deg); }
+	100% { -ms-transform: rotate(360deg); }
+}
+@-o-keyframes spin {
+	0% { -o-transform: rotate(0deg); }
+	100% { -o-transform: rotate(360deg); }
+}
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spinoff {
+	0% { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(-360deg); }
+}
+@-khtml-keyframes spinoff {
+	0% { -khtml-transform: rotate(0deg); }
+	100% { -khtml-transform: rotate(-360deg); }
+}
+@-moz-keyframes spinoff {
+	0% { -moz-transform: rotate(0deg); }
+	100% { -moz-transform: rotate(-360deg); }
+}
+@-ms-keyframes spinoff {
+	0% { -ms-transform: rotate(0deg); }
+	100% { -ms-transform: rotate(-360deg); }
+}
+@-o-keyframes spinoff {
+	0% { -o-transform: rotate(0deg); }
+	100% { -o-transform: rotate(-360deg); }
+}
+@keyframes spinoff {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(-360deg); }
+}
+
+#stage .cloack {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: block;
+	opacity: 1;
+}

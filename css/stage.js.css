@@ -1,0 +1,69 @@
+/* Stage.js */
+
+html {
+	width: 100% !important;
+	height: 100% !important;
+	background: black !important;
+}
+
+body {
+	width: 100% !important;
+	height: 100% !important;
+	overflow: hidden !important;
+	background: black !important;
+	
+	-webkit-text-size-adjust: none;
+	-khtml-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	-o-text-size-adjust: none;
+	text-size-adjust: none;
+	
+	-webkit-touch-callout: none;
+	-khtml-touch-callout: none;
+	-moz-touch-callout: none;
+	-ms-touch-callout: none;
+	-o-touch-callout: none;
+	touch-callout: none;
+	
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+#stage {
+	width: 100%;
+	height: 100%;
+}
+
+#stage .viewport {
+	height: 100%;
+}
+
+#stage .container {
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	display: block !important;
+	float: left;
+}
+
+#stage .sheet {
+	height: auto;
+	min-height: 100%;
+	min-width: 100%;
+	position: absolute;
+	border: none;
+	text-align: left;
+	background: none;
+}
+
+#stage .sheet.test-font {
+	font-family: Helvetica, "Myriad Pro";
+	font-size: 30em;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.75);
+}
