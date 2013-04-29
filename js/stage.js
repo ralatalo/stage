@@ -569,6 +569,11 @@ stageApp.stage.loadPage = function(page_number) {
 	
 	stageApp.stage.loadPage.fadeIn = function(sheet_element, delay) {
 		
+		/*if (sheet_element.hasClass('cached')) {
+			sheet_element.parent().children('.cloack, .spinner').remove();
+			return;
+		}*/
+		
 		if (parseInt(delay)) {
 			delay = parseInt(delay);
 		} else {
@@ -591,7 +596,7 @@ stageApp.stage.loadPage = function(page_number) {
 					 .css('opacity', 0.99);
 		
 		setTimeout(function() {
-			sheet_element.parent().children('.spinner')
+			sheet_element.parent().children('.cloack').children('.spinner')
 						 .css('transition', 'opacity 0.25s linear')
 						 .css('webkitTransition', 'opacity 0.25s linear')
 						 .css('mozTransition', 'opacity 0.25s linear')
@@ -624,23 +629,28 @@ stageApp.stage.loadPage = function(page_number) {
 	stageApp.stage.loadPage.applyDefaultBackground = function(sheet_element) {
 		
 		if (!sheet_element.hasClass('cached') && !(sheet_element.children('.frame').length > 0 && sheet_element.children('.frame').first().hasClass('cached'))) {
+			
 			if (!sheet_element.parent().children('.cloack').length) {
 				var cloack = $('<div/>', {
 					class: 'cloack'
 				});
 				cloack.appendTo(sheet_element.parent());
 				sheet_element.parent().children('.cloack').css('background', 'black');
+				sheet_element.parent().children('.cloack').bind('touchmove mousemove', function() {
+					return false;
+				});
 			}
 			
-			if (!sheet_element.parent().children('.spinner').length) {
+			if (!sheet_element.parent().children('.cloack').children('.spinner').length) {
 				var wide_spinner = $('<div/>', {
 					class: 'spinner wide-spinner'
 				});
 				var small_spinner = $('<div/>', {
 					class: 'spinner small-spinner'
 				});
-				wide_spinner.appendTo(sheet_element.parent());
-				small_spinner.appendTo(sheet_element.parent());
+				// Moved spinners from the sheet parent to the cloack element. (APR13)
+				wide_spinner.appendTo(sheet_element.parent().children('.cloack'));
+				small_spinner.appendTo(sheet_element.parent().children('.cloack'));
 				
 				setTimeout(function() {
 				small_spinner.css('transition', 'opacity 0.25s linear')
@@ -823,11 +833,12 @@ stageApp.stage.unloadPage = function(page_number) {
 				stageApp.stage.unloadPage.unloadInclusion(sheet_element);
 			}
 			
-			sheet_element.parent().children('.spinner').remove();
+			// Removes the spinners now from the cloack element. (APR13)
+			sheet_element.parent().children('.cloack').children('.spinner').remove();
 			
 			sheet_element.parent().children('.cloack').css('background', 'black');
-			sheet_element.parent().children('.cloack').remove();
 			sheet_element.parent().children('.spinner').remove();
+			sheet_element.parent().children('.cloack').remove();
 			sheet_element.removeClass('cached');
 			sheet_element.css('background', 'none');
 			sheet_element.css('opacity', 0);
@@ -1004,6 +1015,8 @@ stageApp.stage.engines.sandbox.generatePage = function(sheet_element, fade_in) {
 			} else {
 				sheet_element.css('opacity', 1);
 			}
+			//sheet_element.parent().children('.cloack, .spinner').remove();
+			sheet_element.parent().children('.cloack').css('opacity', 0.99);
 			sheet_element.addClass('cached');
 			frame.addClass('cached');
 		}
@@ -1044,6 +1057,8 @@ stageApp.stage.engines.sandbox.generatePage = function(sheet_element, fade_in) {
 					} else {
 						sheet_element.css('opacity', 1);
 					}
+					//sheet_element.parent().children('.cloack, .spinner').remove();
+					sheet_element.parent().children('.cloack').css('opacity', 0.99);
 					sheet_element.addClass('cached');
 					frame.addClass('cached');
 				}
@@ -1398,6 +1413,8 @@ stageApp.stage.engines.inclusion.preloadPage = function(sheet_element) {
 				} else {
 					sheet_element.css('opacity', 1);
 				}
+				//sheet_element.parent().children('.cloack, .spinner').remove();
+				sheet_element.parent().children('.cloack').css('opacity', 0.99);
 				sheet_element.addClass('cached');
 				
 			}, 500);
@@ -1437,6 +1454,8 @@ stageApp.stage.engines.inclusion.preloadPage = function(sheet_element) {
 							} else {
 								sheet_element.css('opacity', 1);
 							}
+							//sheet_element.parent().children('.cloack, .spinner').remove();
+							sheet_element.parent().children('.cloack').css('opacity', 0.99);
 							sheet_element.addClass('cached');
 							
 						}, 0);
@@ -1818,6 +1837,8 @@ stageApp.stage.engines.inclusion.generatePage = function(sheet_element, fade_in)
 				} else {
 					sheet_element.css('opacity', 1);
 				}
+				//sheet_element.parent().children('.cloack, .spinner').remove();
+				sheet_element.parent().children('.cloack').css('opacity', 0.99);
 				sheet_element.addClass('cached');
 				
 			}, 500);
@@ -1857,6 +1878,8 @@ stageApp.stage.engines.inclusion.generatePage = function(sheet_element, fade_in)
 							} else {
 								sheet_element.css('opacity', 1);
 							}
+							//sheet_element.parent().children('.cloack, .spinner').remove();
+							sheet_element.parent().children('.cloack').css('opacity', 0.99);
 							sheet_element.addClass('cached');
 							
 						}, 0);
