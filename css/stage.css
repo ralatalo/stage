@@ -638,4 +638,5 @@ x:-o-prefocus, #stand .shadow {
 	position: absolute;
 	display: block;
 	opacity: 1;
+	z-index: 1;
 }
